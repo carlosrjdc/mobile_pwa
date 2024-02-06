@@ -1,16 +1,13 @@
 /** @format */
 
 import MenuSuperior from "@/components/global/menuSuperior";
-import { RecebimentoProvider } from "@/pages/recebimento/context/contextRecebimento";
-import ListaDemanda from "@/pages/recebimento/listaDemanda";
+import ListaDemanda from "@/pagina/recebimento/listaDemanda";
 
 export default function Recebimento() {
-	return (
-		<div>
-			<RecebimentoProvider>
-				<MenuSuperior />
-				<ListaDemanda />
-			</RecebimentoProvider>
-		</div>
-	);
+  return (
+    <div className="h-full flex flex-col">
+      <MenuSuperior />
+      <div className="flex-1"><ListaDemanda /></div>
+    </div>
+  );
 }

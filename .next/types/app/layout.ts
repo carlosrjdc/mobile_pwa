@@ -1,4 +1,4 @@
-// File: /Users/carlos/Documents/mobile-wms/src/app/layout.tsx
+// File: /Users/carlos/Documents/carlos/WMS/front/pwa/src/app/layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

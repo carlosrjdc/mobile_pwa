@@ -1,13 +1,13 @@
+import { Toaster } from "@/components/ui/toaster";
+import { RecebimentoProvider } from "@/pagina/recebimento/context/contextRecebimento";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
 
 const APP_NAME = "PWA App";
 const APP_DEFAULT_TITLE = "My Awesome PWA App";
 const APP_TITLE_TEMPLATE = "%s - PWA App";
 const APP_DESCRIPTION = "Best PWA app in the world!";
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -53,7 +53,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   width: "device-width",
   maximumScale: 1,
-  userScalable: false
+  userScalable: false,
 };
 
 export default function RootLayout({
@@ -63,7 +63,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={inter.className}>{children}<Toaster /></body>
+      <body className={inter.className}>
+        <RecebimentoProvider>{children} </RecebimentoProvider>
+        <Toaster />
+      </body>
     </html>
   );
 }

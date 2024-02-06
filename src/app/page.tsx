@@ -1,10 +1,9 @@
-import MenuPrincipal_Page from "@/pages/MenuInicial";
-import Image from "next/image";
+import MenuPrincipal_Page from "@/pagina/MenuInicial";
 
 export default function Home() {
   return (
     <main className="">
-       <MenuPrincipal_Page/>
+      <MenuPrincipal_Page />
     </main>
   );
 }
