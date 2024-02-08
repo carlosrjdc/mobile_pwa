@@ -25,6 +25,7 @@ export type ActionType =
   | { type: 'SET_INFO_INICIAL'; payload: {doca:string,  lacre:string, fotoCarretaFechada?:File | null, fotoLacre?:File|null} }
   | { type: 'SET_INFO_TEMPERATURA'; payload: {temperatura:number, fotoCarretaAberta?: File|null} }
   | { type: 'ADD_MATERIAL'; payload: {produtos:IProduto}}
+  | { type: 'SET_LOTE'; payload: string}
   | { type: 'REMOVE_MATERIAL'; payload: string}
   | {type:'UPDATE_MATERIAL'; payload: {sku:string, lote:string, quantidade:number, id:string}}
   | {type:"ADD_ANOMALIA"; payload:IAnomalia}
@@ -42,7 +43,7 @@ export interface StateReducer {
     fotoCarretaFechada?: File | null;
     fotoCarretaAberta?: File | null;
     temperatura?: number;
-    produtos:IProduto[]
+    produtos:IProduto
     // Adicione outros estados de paginação, se necessário
   }
 
@@ -54,6 +55,7 @@ export interface StateReducer {
     lote:string;
     quantidade:number;
     peso?:number;
+    empresa?:string;
     anomalias?:IAnomalia | null
   }
 
@@ -62,13 +64,10 @@ export interface StateReducer {
     natureaNConformidade:string;
     tipoNConformidade:string;
     causaNConformidade:string;
-
   }
 
 export interface IType{
     number?:number
-    state:StateReducer,
-    dispatch:Dispatch<ActionType>,
     statePage:StateReducerPagina,
     dispatchPage:Dispatch<ActionTypePage>
     stateAnomalia:StateReducerAnomalia

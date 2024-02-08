@@ -33,7 +33,7 @@ export default function TesteFinal() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register("name")} />
       <input type="number"  {...register("age", { valueAsNumber: true })} />
-      <ErrorMessage errors={errors} name="age" render={({ message }) => <p>{message}</p>} />
+      <ErrorMessage errors={errors} name="age" render={({ message }) => <div>{message}</div>} />
       <input type="submit" />
     </form>
   )

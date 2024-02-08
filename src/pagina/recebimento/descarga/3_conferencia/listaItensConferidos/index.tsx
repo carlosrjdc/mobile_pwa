@@ -17,7 +17,7 @@ import {
 	SheetTitle,
 	SheetTrigger
 } from "@/components/ui/sheet";
-import { useRecebimentoContext } from "@/pagina/recebimento/context/contextRecebimento";
+import { useProductStore } from "@/pagina/recebimento/states/recebimentoState";
 import { ListTodo, Pencil } from "lucide-react";
 import { useEffect, useState } from "react";
 import EditarProduto from "../editarItem";
@@ -35,7 +35,7 @@ type Item = {
 
 export default function ListaItemsConferidos() {
     const [open, setOpen] = useState(false)
-	const { state } = useRecebimentoContext()
+	const  products  = useProductStore((state)=> state.produtos)
        
     useEffect(() => {
       const down = (e: KeyboardEvent) => {
@@ -59,9 +59,9 @@ export default function ListaItemsConferidos() {
 					<SheetHeader>
 						<SheetTitle>Items conferidos</SheetTitle>
 					</SheetHeader>
-					{state.produtos && <ScrollArea className='h-full rounded-md '>
+					{products && <ScrollArea className='h-full rounded-md '>
 						<div className='grid gap-2 py-4'>
-							{state.produtos.map((item, index) => (
+							{products.map((item, index) => (
 								<ItemArray key={index} item={item} />
 							))}
 						</div>

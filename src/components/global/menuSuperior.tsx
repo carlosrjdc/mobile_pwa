@@ -1,8 +1,8 @@
 /** @format */
 'use client'
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { Undo2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function MenuSuperior() {
   const router = useRouter();
@@ -25,9 +25,9 @@ export default function MenuSuperior() {
   }, [router]); // Adicione `router` à lista de dependências para garantir que o useEffect seja recriado quando `router` for alterado
 
   return (
-    <div className='bg-cyan-600 flex justify-between px-2 py-2 items-center'>
-      <Undo2 onClick={()=> router.back()} size={40} />
-      <strong>MENU</strong>
+    <div className='bg-primary flex justify-between px-2 py-2 items-center'>
+      <Undo2 className='text-secondary' onClick={()=> router.back()} size={40} />
+      <strong className='text-secondary'>MENU</strong>
     </div>
   );
 }

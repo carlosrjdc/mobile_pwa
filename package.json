@@ -31,6 +31,7 @@
     "cmdk": "^0.2.1",
     "date-fns": "^3.3.1",
     "embla-carousel-react": "^8.0.0-rc22",
+    "flowbite": "^2.2.1",
     "html5-qrcode": "^2.3.8",
     "idb-keyval": "^6.2.1",
     "lucide-react": "^0.320.0",
@@ -44,7 +45,8 @@
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^9.0.1",
     "vaul": "^0.8.9",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@types/node": "^20",

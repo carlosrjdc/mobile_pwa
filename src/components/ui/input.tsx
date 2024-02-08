@@ -11,7 +11,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ texto, className, type, ...props }, ref) => {
     return (
       <div className="flex focus-visible:p-2 focus:p-2 items-center gap-2 h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50">
-        <span className="font-bold">{texto}</span>
+        <div className="font-bold">{texto}</div>
         <input
           type={type}
           className={cn(

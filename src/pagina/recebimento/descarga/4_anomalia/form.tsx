@@ -28,7 +28,6 @@ import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { useRecebimentoContext } from "../../context/contextRecebimento";
 import { AnomaliaSchema, IAnomalia } from "../../types/anomalia";
 
 export default function FormularioAnomalia() {
@@ -194,8 +193,6 @@ export default function FormularioAnomalia() {
     { label: "4-Devolução", value: "devolucao" },
     { label: "5-Retorno Empreiteiro / RCA", value: "empreiteiroRca" },
   ] as const;
-
-  const { dispatch } = useRecebimentoContext();
 
   return (
     <div className=" w-full">

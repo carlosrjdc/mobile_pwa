@@ -3,7 +3,8 @@ export type ITabela = {
     desc:string,
     ean:string,
     dum:string,
-    tipo:"PVAR" | "PPAR"
+    tipo:"PVAR" | "PPAR",
+    empresa: "lactalis" | "dpa" | "itambe"
 }
 
 export const tabela = [
@@ -13,6 +14,7 @@ export const tabela = [
     ean: "7891000261026",
     dum: "7891000261033",
     tipo: "PVAR",
+    empresa:"dpa"
   },
   {
     sku: 12343045,
@@ -20,6 +22,7 @@ export const tabela = [
     ean: "7891000070444",
     dum: "7891000249215",
     tipo: "PVAR",
+    empresa:"lactalis"
   },
   {
     sku: 12342555,
@@ -27,6 +30,7 @@ export const tabela = [
     ean: "7891000072950",
     dum: "7891000248546",
     tipo: "PVAR",
+    empresa:"dpa"
   },
   {
     sku: 12515949,
@@ -34,6 +38,7 @@ export const tabela = [
     ean: "7891000360323",
     dum: "17891000360337",
     tipo: "PVAR",
+    empresa:"dpa"
   },
   {
     sku: 12518476,
@@ -41,6 +46,7 @@ export const tabela = [
     ean: "7891000362037",
     dum: "17891000362041",
     tipo: "PVAR",
+    empresa:"dpa"
   },
   {
     sku: 12324186,
@@ -48,6 +54,7 @@ export const tabela = [
     ean: "7891000120750",
     dum: "7891000120767",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12334269,
@@ -55,6 +62,7 @@ export const tabela = [
     ean: "7891000244449",
     dum: "7891000244456",
     tipo: "PVAR",
+    empresa:"dpa"
   },
   {
     sku: 12342863,
@@ -62,6 +70,7 @@ export const tabela = [
     ean: "7891000027974",
     dum: "7891000249222",
     tipo: "PPAR",
+    empresa:"lactalis"
   },
   {
     sku: 12119803,
@@ -76,6 +85,7 @@ export const tabela = [
     ean: "7891000103937",
     dum: "7891000245125",
     tipo: "PPAR",
+    empresa:"lactalis"
   },
   {
     sku: 12342563,
@@ -83,6 +93,7 @@ export const tabela = [
     ean: "7891000072998",
     dum: "7891000248522",
     tipo: "PPAR",
+    empresa:"lactalis"
   },
   {
     sku: 12531300,
@@ -90,6 +101,7 @@ export const tabela = [
     ean: "7891000370933",
     dum: "17891000370947",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12342556,
@@ -97,6 +109,7 @@ export const tabela = [
     ean: "7891000072974",
     dum: "7891000248508",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12519339,
@@ -104,6 +117,7 @@ export const tabela = [
     ean: "7891000363256",
     dum: "17891000363260",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12220265,
@@ -111,6 +125,7 @@ export const tabela = [
     ean: "7891000096864",
     dum: "7891000096871",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12551709,
@@ -118,6 +133,7 @@ export const tabela = [
     ean: "7891000378175",
     dum: "17891000378189",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12354550,
@@ -125,6 +141,7 @@ export const tabela = [
     ean: "7891000252819",
     dum: "7891000252826",
     tipo: "PPAR",
+    empresa:"lactalis"
   },
   {
     sku: 12515950,
@@ -132,6 +149,7 @@ export const tabela = [
     ean: "7891000360361",
     dum: "17891000360375",
     tipo: "PPAR",
+    empresa:"lactalis"
   },
   {
     sku: 12334185,
@@ -139,6 +157,7 @@ export const tabela = [
     ean: "7891000244265",
     dum: "7891000244272",
     tipo: "PPAR",
+    empresa:"lactalis"
   },
   {
     sku: 12382903,
@@ -146,6 +165,7 @@ export const tabela = [
     ean: "7891000261460",
     dum: "7891000261477",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12334575,
@@ -153,6 +173,7 @@ export const tabela = [
     ean: "7891000244548",
     dum: "7891000244555",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12282901,
@@ -160,6 +181,7 @@ export const tabela = [
     ean: "7891000110430",
     dum: "7891000110447",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12516216,
@@ -167,6 +189,7 @@ export const tabela = [
     ean: "7891000360668",
     dum: "17891000360672",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12381132,
@@ -174,6 +197,7 @@ export const tabela = [
     ean: "7891000260166",
     dum: "7891000260173",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12383027,
@@ -181,6 +205,7 @@ export const tabela = [
     ean: "7891000261484",
     dum: "7891000261491",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12579698,
@@ -188,6 +213,7 @@ export const tabela = [
     ean: "7891000394632",
     dum: "17891000394646",
     tipo: "PPAR",
+    empresa:"dpa"
   },
   {
     sku: 12342567,
@@ -195,5 +221,6 @@ export const tabela = [
     ean: "7891000340004",
     dum: "7891000248560",
     tipo: "PPAR",
+    empresa:"dpa"
   },
 ];

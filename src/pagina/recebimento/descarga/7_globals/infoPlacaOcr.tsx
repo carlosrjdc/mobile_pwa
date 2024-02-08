@@ -1,15 +1,16 @@
 'use client'
 
 import { Label } from "@/components/ui/label";
-import { useRecebimentoContext } from "../../context/contextRecebimento";
+import useInfoCarStore from "../../states/recebimentoState";
 
 export default function InfoPlacaOcr() {
-  const { state, dispatchPage } = useRecebimentoContext();
+  const infoCarro = useInfoCarStore((state)=> state.infoCarro)
+
   return (
     <div>
-      <div className="flex justify-center py-2 bg-cyan-500">
-        <Label className="font-bold uppercase ">
-          OCR:{state.ocr} | Placa:{state.placa}{" "}
+      <div className="flex justify-center py-2 bg-secondary-foreground">
+        <Label className="font-bold uppercase text-secondary">
+          OCR:{infoCarro.ocr} | Placa:{infoCarro.placa}{" "}
         </Label>
       </div>
     </div>

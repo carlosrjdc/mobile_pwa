@@ -3,7 +3,6 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { initialStateRecebimentoAnomalia, recebimentoAnomaliaReducer } from "./reducerAnomaliaRecebimento";
 import { initialStateRecebimentoPagina, recebimentoPaginaReducer } from "./reducerPaginaRecebimento";
-import { initialStateRecebimento, recebimentoReducer } from "./reducerRecebimento";
 import { IType, InterfaceProviderProps } from "./type";
 
 export const RecebimentoContext = createContext<IType | undefined>(undefined);
@@ -11,10 +10,6 @@ export const RecebimentoContext = createContext<IType | undefined>(undefined);
 export const RecebimentoProvider: React.FC<InterfaceProviderProps> = ({
 	children,
 }) => {
-	const [state, dispatch] = useReducer(
-		recebimentoReducer,
-		initialStateRecebimento,
-	);
 	const [statePage, dispatchPage] = useReducer(
 		recebimentoPaginaReducer,
 		initialStateRecebimentoPagina,
@@ -28,7 +23,7 @@ export const RecebimentoProvider: React.FC<InterfaceProviderProps> = ({
 	);*/
 
 	return (
-		<RecebimentoContext.Provider value={{ state, dispatch, dispatchPage, statePage, stateAnomalia,dispatchAnomalia}}>
+		<RecebimentoContext.Provider value={{ dispatchPage, statePage, stateAnomalia,dispatchAnomalia}}>
 			{children}
 		</RecebimentoContext.Provider>
 	);

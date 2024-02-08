@@ -1,93 +1,97 @@
 /** @format */
-'use client'
-import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog";
+"use client";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useRecebimentoContext } from "@/pagina/recebimento/context/contextRecebimento";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { useProductStore } from "@/pagina/recebimento/states/recebimentoState";
 import { CheckCircle2, Trash2 } from "lucide-react";
 import { ReactNode, useState } from "react";
 
 export default function EditarProduto({
-    id,
+  id,
   item,
   lote,
   quantidade,
   children,
 }: {
-    id:string
+  id: string;
   item: string;
   lote: string;
   quantidade: number;
   children?: ReactNode;
 }) {
+  const [sku, setSku] = useState(item);
+  const [stateLote, setStateLote] = useState(lote);
+  const [stateQuantidade, setStateQuantidade] = useState(quantidade);
 
-    const[sku, setSku] = useState(item)
-    const [stateLote, setStateLote] = useState(lote)
-    const [stateQuantidade,setStateQuantidade] = useState(quantidade)
-
-    const { dispatch } = useRecebimentoContext()
+  const REMOVE_PRODUCT = useProductStore((state) => state.REMOVE_PRODUTO);
+  const UPDATE_PRODUCT = useProductStore((state) => state.UPDATE_PRODUTO);
 
   return (
     <div className="flex relative">
-      <Dialog>
-        <DialogTrigger asChild>{children}</DialogTrigger>
-        <DialogContent className="sm:max-w-[425px] absolute ">
-          <DialogHeader className="bg-primary-foreground py-4">
-            <DialogTitle>Editar Item</DialogTitle>
-          </DialogHeader>
-          <div className="grid gap-2 py-2">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right text-xl">
-                SKU
-              </Label>
-              <Input
-                onChange={(e)=> setSku(e.target.value)}
-                id="name"
-                defaultValue={item}
-                className="col-span-3 text-xl"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-2">
-              <Label htmlFor="username" className="text-right text-xl">
-                Lote
-              </Label>
-              <Input
-                onChange={(e)=> setStateLote(e.target.value)}
-                id="username"
-                defaultValue={stateLote}
-                className="col-span-3 text-xl"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-2">
-              <Label htmlFor="username" className="text-right text-xl">
-                QTD
-              </Label>
-              <Input
-                onChange={(e)=> setStateQuantidade(parseInt(e.target.value))}
-                id="username"
-                defaultValue={stateQuantidade}
-                className="col-span-3 text-xl"
-              />
+      <Sheet>
+        <SheetTrigger asChild>{children}</SheetTrigger>
+        <SheetContent side="top">
+          <SheetHeader className="bg-secondary mt-2 rounded py-2">
+            <SheetTitle>Editar Item</SheetTitle>
+          </SheetHeader>
+          <div className="px-2 py-4 border rounded">
+            <div className="grid gap-1">
+              <div className="grid items-center gap-4 ">
+                <Input
+                  texto="SKU:"
+                  onChange={(e) => setSku(e.target.value)}
+                  id="name"
+                  defaultValue={item}
+                  className="col-span-3 font-semibold"
+                />
+              </div>
+              <div className="grid items-center gap-2">
+                <Input
+                  texto="LOTE:"
+                  onChange={(e) => setStateLote(e.target.value)}
+                  id="username"
+                  defaultValue={stateLote}
+                  className="col-span-3 font-semibold"
+                />
+              </div>
+              <div className="grid items-center gap-2">
+                <Input
+                  texto="QUANTIDADE:"
+                  onChange={(e) => setStateQuantidade(parseInt(e.target.value))}
+                  id="username"
+                  defaultValue={stateQuantidade}
+                  className="col-span-3 font-semibold"
+                />
+              </div>
             </div>
           </div>
-          <DialogFooter>
-            <DialogClose>
+          <SheetFooter>
+            <SheetClose>
               <div className="flex justify-between px-2">
-                <Trash2 onClick={()=> dispatch({type:"REMOVE_MATERIAL", payload:id})} color="red" />
-                <CheckCircle2 onClick={()=> dispatch({type:"UPDATE_MATERIAL", payload:{id:id, lote:stateLote, quantidade:stateQuantidade, sku:sku}})} color="green" />
+                <Trash2 onClick={() => REMOVE_PRODUCT(id)} color="red" />
+                <CheckCircle2
+                  onClick={() =>
+                    UPDATE_PRODUCT({
+                      id: id,
+                      lote: stateLote,
+                      quantidade: stateQuantidade,
+                    })
+                  }
+                  color="green"
+                />
               </div>
-            </DialogClose>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+            </SheetClose>
+          </SheetFooter>
+        </SheetContent>
+      </Sheet>
     </div>
   );
 }

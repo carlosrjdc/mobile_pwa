@@ -13,6 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useRecebimentoContext } from "../../context/contextRecebimento";
+import { useAnomaliaStore } from "../../states/recebimentoState";
 import InfoPlacaOcr from "../7_globals/infoPlacaOcr";
 import AjudaDrawer from "./ajuda";
 import {
@@ -23,7 +25,7 @@ import {
 } from "./data";
 
 export default function Anomalia() {
-  const [open, setOpen] = React.useState({
+  const [dados, setDados] = React.useState({
     origemNaoConformidade: "",
     causaFinal: "",
     causa: "",
@@ -33,16 +35,32 @@ export default function Anomalia() {
   });
 
   const filtrado = CausaNaoConformidadeArray.filter(
-    (item) => item.categoria === open.causaFinal
+    (item) => item.categoria === dados.causaFinal
   );
+
+  const ADD_ANOMLIA = useAnomaliaStore((state)=> state.ADD_ANOMALIA)
+
+
 
   const tamanhoEmBytes = new TextEncoder().encode(
     JSON.stringify(CausaNaoConformidadeArray)
   ).length;
 
   const[qtd, setQtd]= React.useState<number | null>(null)
+  const { dispatchPage } = useRecebimentoContext();
 
-  console.log(tamanhoEmBytes);
+  function AddNovaAnomalia(){
+    ADD_ANOMLIA({
+      causaNConformidade:dados.causa,
+      localAvariaPallet: dados.localDoPallet,
+      localAvariaVeiculo: dados.localAvaria,
+      origemNConformidade: dados.origemNaoConformidade,
+      setorNConformidade: dados.causaFinal,
+      tipoNConformidade: dados.tipo,
+      quantidade:qtd ? qtd : 0
+    })
+    dispatchPage({type:"SET_PAGE", payload:{page:"conferencia"}})
+  }
 
   return (
     <div className="p-2 flex flex-col gap-2">
@@ -51,15 +69,15 @@ export default function Anomalia() {
      { qtd && <div className="flex items-center gap-2">
         <Label>Veiculo</Label>
         <Select
-          value={open.localAvaria}
-          onValueChange={(e) => setOpen({ ...open, localAvaria: e })}
+          value={dados.localAvaria}
+          onValueChange={(e) => setDados({ ...dados, localAvaria: e })}
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Local avaria no Veiculo" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel> {open.localAvaria}</SelectLabel>
+              <SelectLabel> {dados.localAvaria}</SelectLabel>
               {[
                 { label: "Frente/Cavalo", value: "frenteCavalos" },
                 { label: "Meio", value: "meio" },
@@ -80,18 +98,18 @@ export default function Anomalia() {
           </SelectContent>
         </Select>
       </div>}
-      {open.localAvaria !== "" && <div className="flex items-center gap-2">
+      {dados.localAvaria !== "" && <div className="flex items-center gap-2">
         <Label>Pallet</Label>
         <Select
-          value={open.localDoPallet}
-          onValueChange={(e) => setOpen({ ...open, localDoPallet: e })}
+          value={dados.localDoPallet}
+          onValueChange={(e) => setDados({ ...dados, localDoPallet: e })}
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Local Avaria no Pallet" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel> {open.localDoPallet}</SelectLabel>
+              <SelectLabel> {dados.localDoPallet}</SelectLabel>
               {[
                 { label: "Superior", value: "superior" },
                 { label: "Lateral", value: "lateral" },
@@ -113,18 +131,18 @@ export default function Anomalia() {
           </SelectContent>
         </Select>
       </div>}
-      {open.localDoPallet !== "" &&  <div className="flex items-center gap-2">
+      {dados.localDoPallet !== "" &&  <div className="flex items-center gap-2">
         <Label>Tipo</Label>
         <Select
-          value={open.tipo}
-          onValueChange={(e) => setOpen({ ...open, tipo: e })}
+          value={dados.tipo}
+          onValueChange={(e) => setDados({ ...dados, tipo: e })}
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Selecione o tipo da Não Conformidade" />
           </SelectTrigger>
           <SelectContent onChange={(e) => alert("oie")}>
             <SelectGroup onChange={(e) => alert("foi")}>
-              <SelectLabel> {open.causaFinal}</SelectLabel>
+              <SelectLabel> {dados.causaFinal}</SelectLabel>
               {tipoNConformidadeArray.map((item, index) => (
                 <div key={index} onClick={() => alert("div")}>
                   <SelectItem
@@ -141,18 +159,18 @@ export default function Anomalia() {
         </Select>
       </div>}
 
-      { open.tipo !== "" &&  <div className="flex items-center gap-2">
+      { dados.tipo !== "" &&  <div className="flex items-center gap-2">
         <Label>Origem</Label>
         <Select
-          value={open.origemNaoConformidade}
-          onValueChange={(e) => setOpen({ ...open, origemNaoConformidade: e })}
+          value={dados.origemNaoConformidade}
+          onValueChange={(e) => setDados({ ...dados, origemNaoConformidade: e })}
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Selecione a origem da Nao Conformidade " />
           </SelectTrigger>
           <SelectContent onChange={(e) => alert("oie")}>
             <SelectGroup onChange={(e) => alert("foi")}>
-              <SelectLabel> {open.origemNaoConformidade}</SelectLabel>
+              <SelectLabel> {dados.origemNaoConformidade}</SelectLabel>
               {originNaoConformidadeArray.map((item, index) => (
                 <div key={index} onClick={() => alert("div")}>
                   <SelectItem
@@ -169,18 +187,18 @@ export default function Anomalia() {
         </Select>
       </div>}
 
-      {open.origemNaoConformidade !== "" &&  <div className="flex items-center gap-2">
+      {dados.origemNaoConformidade !== "" &&  <div className="flex items-center gap-2">
         <Label>Setor</Label>
         <Select
-          value={open.causaFinal}
-          onValueChange={(e) => setOpen({ ...open, causaFinal: e })}
+          value={dados.causaFinal}
+          onValueChange={(e) => setDados({ ...dados, causaFinal: e })}
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Selecione o Setor da Nao conformidade " />
           </SelectTrigger>
           <SelectContent onChange={(e) => alert("oie")}>
             <SelectGroup onChange={(e) => alert("foi")}>
-              <SelectLabel> {open.causaFinal}</SelectLabel>
+              <SelectLabel> {dados.causaFinal}</SelectLabel>
               {causaFinalArray.map((item, index) => (
                 <div key={index} onClick={() => alert("div")}>
                   <SelectItem
@@ -197,18 +215,18 @@ export default function Anomalia() {
         </Select>
       </div>}
 
-      {open.causaFinal !== "" &&  <div className="flex items-center gap-2">
+      {dados.causaFinal !== "" &&  <div className="flex items-center gap-2">
         <Label>Não Conformidade</Label>
         <Select
-          value={open.causa}
-          onValueChange={(e) => setOpen({ ...open, causa: e })}
+          value={dados.causa}
+          onValueChange={(e) => setDados({ ...dados, causa: e })}
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Selecionar a Não conformidade" />
           </SelectTrigger>
           <SelectContent onChange={(e) => alert("oie")}>
             <SelectGroup onChange={(e) => alert("foi")}>
-              <SelectLabel> {open.causa}</SelectLabel>
+              <SelectLabel> {dados.causa}</SelectLabel>
               {filtrado.map((item, index) => (
                 <div key={index} onClick={() => alert("div")}>
                   <SelectItem
@@ -224,7 +242,7 @@ export default function Anomalia() {
           </SelectContent>
         </Select>
       </div>}
-      {open.causa !== "" &&  <div className="p-2 border mt-8 rounded">
+      {dados.causa !== "" &&  <div className="p-2 border mt-8 rounded">
         <div className="flex justify-between bg-blue-400 p-2 rounded">
           <span className="font-bold">CADASTRE AS FOTOS</span>
           <AjudaDrawer/>
@@ -246,6 +264,10 @@ export default function Anomalia() {
           <Input type="file" />
         </div>
       </div>}
+      <div className="flex justify-between mt-4">
+        <Button onClick={()=> AddNovaAnomalia()} type="button">VOLTAR</Button>
+        <Button onClick={()=> AddNovaAnomalia()} type="button">CADASTRAR</Button>
+      </div>
       <Button>CADASTRAR ANOMALIA</Button>
     </div>
   );
