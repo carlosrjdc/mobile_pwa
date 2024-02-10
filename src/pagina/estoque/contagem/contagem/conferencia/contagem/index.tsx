@@ -108,6 +108,11 @@ export default function ContagemEnderecos() {
     }
   }
 
+  function ajustarValor(endereco: string) {
+    console.log("opa");
+    setValue("endereco", endereco);
+  }
+
   return (
     <form
       className="flex flex-col gap-4 w-full p-2"
@@ -143,7 +148,7 @@ export default function ContagemEnderecos() {
           valueAsNumber: true,
         })}
       />
-      <LerEtiquetaEndereco funcao={()=>setValue}/>
+      <LerEtiquetaEndereco funcao={ajustarValor}/>
 
       <div className="flex justify-between mt-4">
         <Button onClick={() => setarProduto()} type="button">

@@ -59,8 +59,13 @@ const data = [
 	},
 ];
 
-export default function LerEtiquetaEndereco({funcao}:{funcao:()=> void }) {
+export default function LerEtiquetaEndereco({funcao}:{funcao: (e:string) => void;}) {
 	const [goal, setGoal] = React.useState(350);
+
+    React.useEffect(()=>{
+        console.log("pasei")
+        funcao("passei")
+    },[])
 
 	function onClick(adjustment: number) {
 		setGoal(Math.max(200, Math.min(400, goal + adjustment)));

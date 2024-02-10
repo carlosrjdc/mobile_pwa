@@ -5,6 +5,7 @@ export default function LerQRCode({funcao}:{funcao:(e:string)=> void}){
     const [scanResult, setScanResult] = useState(null);
 
 	useEffect(() => {
+
 		const scanner = new Html5Qrcode("reader")
 
 		const config = { fps: 10, qrbox: { width: 250, height: 250 } };
@@ -12,8 +13,9 @@ export default function LerQRCode({funcao}:{funcao:(e:string)=> void}){
 		scanner.start({ facingMode: "environment" },config,success,error)
 
 		function success(result: any) {
-			scanner.stop();
 			funcao(result);
+			scanner.stop();
+
 		}
 
 		function error(err: any) {
