@@ -2,19 +2,6 @@ import axios from "axios";
 import NextAuth from "next-auth";
 import KeycloakProvider from "next-auth/providers/keycloak";
 
-
-export const authOptions = {
-  providers: [
-    KeycloakProvider({
-      clientId: "novo" as string,
-      clientSecret: "NgD8nMq4xHexBhg1OryIWqAgU7R1VR9l" as string,
-      issuer: "http://localhost:8080/realms/carlos",
-
-      
-    }),
-  ],
-};
-
 const handler = NextAuth({
   providers: [
     KeycloakProvider({

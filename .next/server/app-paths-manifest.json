@@ -1,4 +1,13 @@
 {
+  "/_not-found": "app/_not-found.js",
+  "/(recebimento)/recebimento/page": "app/(recebimento)/recebimento/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/(recebimento)/recebimento/[id]/page": "app/(recebimento)/recebimento/[id]/page.js",
+  "/devolucao/page": "app/devolucao/page.js",
   "/estoque/[id]/page": "app/estoque/[id]/page.js",
-  "/estoque/page": "app/estoque/page.js"
+  "/expedicao/page": "app/expedicao/page.js",
+  "/estoque/page": "app/estoque/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js"
 }
