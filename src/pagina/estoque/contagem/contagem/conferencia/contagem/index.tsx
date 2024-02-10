@@ -20,7 +20,7 @@ const schema = z.object({
   lote: z.string(),
   caixas: z.number(),
   unidade: z.number(),
-  endereco: z.string()
+  endereco: z.string(),
 });
 
 type Schema = z.infer<typeof schema>;
@@ -54,10 +54,10 @@ export default function ContagemEnderecos() {
       quantidade: data.caixas,
       sku: data.produto,
       unidade: data.unidade,
-      endereco:data.endereco,
-      fabricacao:"",
-      sif:0,
-      descricao:infoSku
+      endereco: data.endereco,
+      fabricacao: "",
+      sif: 0,
+      descricao: infoSku,
     });
     console.log(data);
   };
@@ -79,7 +79,7 @@ export default function ContagemEnderecos() {
           : item
           */
 
-  //LerQRCode        
+  //LerQRCode
 
   async function onChangeProduto(event: any) {
     console.log(await isOnline());
@@ -109,8 +109,12 @@ export default function ContagemEnderecos() {
   }
 
   function ajustarValor(endereco: string) {
-    console.log("opa");
+
     setValue("endereco", endereco);
+  }
+
+  function ajustarValorSku(sku: string) {
+    setValue("produto", sku);
   }
 
   return (
@@ -118,22 +122,28 @@ export default function ContagemEnderecos() {
       className="flex flex-col gap-4 w-full p-2"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Input
-        texto="Endereço"
-        {...register("endereco", {
-          onBlur(event) {
-            onChangeProduto(event);
-          },
-        })}
-      />
-      <Input
-        texto="SKU"
-        {...register("produto", {
-          onBlur(event) {
-            onChangeProduto(event);
-          },
-        })}
-      />
+      <div className="flex justify-between items-center gap-2" >
+        <Input
+          texto="Endereço"
+          {...register("endereco", {
+            onBlur(event) {
+              onChangeProduto(event);
+            },
+          })}
+        />
+        <LerEtiquetaEndereco funcao={ajustarValor} />
+      </div>
+      <div className="flex justify-between items-center gap-2" >
+        <Input
+          texto="SKU"
+          {...register("produto", {
+            onBlur(event) {
+              onChangeProduto(event);
+            },
+          })}
+        />
+        <LerEtiquetaEndereco funcao={ajustarValorSku} />
+      </div>
       {infoSku && <strong>{infoSku}</strong>}
       <Input texto="Lote" {...register("lote")} />
       <Input
@@ -148,7 +158,6 @@ export default function ContagemEnderecos() {
           valueAsNumber: true,
         })}
       />
-      <LerEtiquetaEndereco funcao={ajustarValor}/>
 
       <div className="flex justify-between mt-4">
         <Button onClick={() => setarProduto()} type="button">
