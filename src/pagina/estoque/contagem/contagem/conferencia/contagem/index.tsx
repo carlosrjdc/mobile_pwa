@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import * as z from "zod";
 import LerEtiquetaEndereco from "./lerEndereco";
+import LoteProdutoContagem from "./lote";
 
 //TIPAGEM
 const schema = z.object({
@@ -109,11 +110,13 @@ export default function ContagemEnderecos() {
   }
 
   function ajustarValor(endereco: string) {
-
     setValue("endereco", endereco);
   }
+  function ajustarValorLote(lote: string) {
+    setValue("lote", lote);
+  }
 
-  function ajustarValorSku(sku: string) {
+  async function ajustarValorSku(sku: string) {
     setValue("produto", sku);
   }
 
@@ -122,7 +125,7 @@ export default function ContagemEnderecos() {
       className="flex flex-col gap-4 w-full p-2"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex justify-between items-center gap-2" >
+      <div className="flex justify-between items-center gap-2">
         <Input
           texto="Endereço"
           {...register("endereco", {
@@ -133,7 +136,7 @@ export default function ContagemEnderecos() {
         />
         <LerEtiquetaEndereco funcao={ajustarValor} />
       </div>
-      <div className="flex justify-between items-center gap-2" >
+      <div className="flex justify-between items-center gap-2">
         <Input
           texto="SKU"
           {...register("produto", {
@@ -145,7 +148,14 @@ export default function ContagemEnderecos() {
         <LerEtiquetaEndereco funcao={ajustarValorSku} />
       </div>
       {infoSku && <strong>{infoSku}</strong>}
-      <Input texto="Lote" {...register("lote")} />
+      <div className="flex justify-between items-center gap-2">
+        <Input texto="Lote" {...register("lote")} />
+        <LoteProdutoContagem
+          valueDisable={infoSku === ""}
+          empresa={empresa}
+          setValue={ajustarValorLote}
+        />
+      </div>
       <Input
         texto="Caixas"
         {...register("caixas", {
