@@ -1,9 +1,10 @@
 /** @format */
 
 "use client";
-import { AlertOctagon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import instance from "@/config/http";
 import { useRecebimentoContext } from "../../context/contextRecebimento";
-import { useProductStore } from "../../states/recebimentoState";
+import useInfoCarStore, { useProductStore } from "../../states/recebimentoState";
 import InfoPlacaOcr from "../7_globals/infoPlacaOcr";
 import FormularioConferencia from "./form";
 import LerEtiquetaPorFoto from "./lerEtiquetaFoto";
@@ -14,6 +15,12 @@ import ListaItemsConferidos from "./listaItensConferidos";
 export default function Conferencia() {
   const { dispatchPage } = useRecebimentoContext();
   const infoProduct = useProductStore((state) => state.produtos);
+  const infoCar = useInfoCarStore((state)=> state.infoCarro)
+
+  function cadastrar(){
+    return instance.post(`/lote`,{info:infoCar,produtos:infoProduct})
+  }
+
 
   return (
     <div className="flex flex-col w-full min-h-screen">
@@ -21,6 +28,7 @@ export default function Conferencia() {
       <div className="p-2 flex w-full">
         <FormularioConferencia />
       </div>
+      
 
       <div className="flex justify-between p-2 mx-1 mt-4 border rounded">
         <LerEtiquetaPorFoto />
@@ -37,17 +45,7 @@ export default function Conferencia() {
         </div>
       </div>
       <div className="">
-        <div
-          onClick={() =>
-            dispatchPage({ type: "SET_PAGE", payload: { page: "anomalia" } })
-          }
-          className="flex bg-red-200 m-1 rounded p-2 mt-16 items-center gap-1 justify-center"
-        >
-          <AlertOctagon color="red" />
-          <span className="text-sm uppercase font-semibold">
-            {"Registrar Anomalia  -->"}
-          </span>
-        </div>
+        <Button onClick={()=> cadastrar()}>post</Button>
       </div>
     </div>
   );

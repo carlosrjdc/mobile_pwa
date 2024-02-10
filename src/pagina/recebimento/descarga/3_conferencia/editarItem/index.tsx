@@ -19,17 +19,23 @@ export default function EditarProduto({
   item,
   lote,
   quantidade,
+  unidade,
+  peso,
   children,
 }: {
   id: string;
   item: string;
   lote: string;
   quantidade: number;
+  unidade:number;
+  peso:number;
   children?: ReactNode;
 }) {
   const [sku, setSku] = useState(item);
   const [stateLote, setStateLote] = useState(lote);
   const [stateQuantidade, setStateQuantidade] = useState(quantidade);
+  const [statePeso, setStatePeso] = useState(peso);
+  const [stateUnidade, setStateUnidade] = useState(unidade);
 
   const REMOVE_PRODUCT = useProductStore((state) => state.REMOVE_PRODUTO);
   const UPDATE_PRODUCT = useProductStore((state) => state.UPDATE_PRODUTO);
@@ -46,9 +52,10 @@ export default function EditarProduto({
             <div className="grid gap-1">
               <div className="grid items-center gap-4 ">
                 <Input
+                  disabled
                   texto="SKU:"
                   onChange={(e) => setSku(e.target.value)}
-                  id="name"
+                  id="sku"
                   defaultValue={item}
                   className="col-span-3 font-semibold"
                 />
@@ -57,17 +64,31 @@ export default function EditarProduto({
                 <Input
                   texto="LOTE:"
                   onChange={(e) => setStateLote(e.target.value)}
-                  id="username"
+                  id="lote"
                   defaultValue={stateLote}
                   className="col-span-3 font-semibold"
                 />
               </div>
               <div className="grid items-center gap-2">
                 <Input
-                  texto="QUANTIDADE:"
+                  texto="CAIXAS:"
                   onChange={(e) => setStateQuantidade(parseInt(e.target.value))}
-                  id="username"
+                  id="quantidade"
                   defaultValue={stateQuantidade}
+                  className="col-span-3 font-semibold"
+                />
+                <Input
+                  texto="UNIDADES:"
+                  onChange={(e) => setStateUnidade(parseInt(e.target.value))}
+                  id="unidade"
+                  defaultValue={stateUnidade}
+                  className="col-span-3 font-semibold"
+                />
+                <Input
+                  texto="PESO:"
+                  onChange={(e) => setStatePeso(parseFloat(e.target.value))}
+                  id="peso"
+                  defaultValue={statePeso}
                   className="col-span-3 font-semibold"
                 />
               </div>
@@ -83,6 +104,9 @@ export default function EditarProduto({
                       id: id,
                       lote: stateLote,
                       quantidade: stateQuantidade,
+                      peso:statePeso,
+                      unidade:stateUnidade
+
                     })
                   }
                   color="green"

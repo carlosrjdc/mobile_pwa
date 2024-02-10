@@ -30,6 +30,8 @@ type Item = {
 	sku: string;
 	lote: string;
 	quantidade: number;
+	peso?:number;
+	unidade?:number
 };
 
 
@@ -91,7 +93,10 @@ function ItemArray({ item }: { item: Item }) {
                             id={item.id}
 							item={item.sku}
 							lote={item.lote}
-							quantidade={item.quantidade}>
+							quantidade={item.quantidade}
+							peso={item.peso? item.peso : 0}
+							unidade={item.unidade ? item.unidade : 0}
+							>
 							<Pencil size={25} />
 						</EditarProduto>
 					</div>

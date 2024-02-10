@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: process.env.URL_RECEBIMENTO,
-    timeout: 1000,
-    headers: {'X-Custom-Header': 'foobar'}
-  });
+  baseURL: "http://localhost:4000/",
+  timeout: 1000,
+  headers: { "X-Custom-Header": "foobar", Accept: "application/json",  },
+});
 
-  export default instance
+export default instance;

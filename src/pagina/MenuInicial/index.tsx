@@ -1,19 +1,21 @@
 /** @format */
 "use client";
 import Image, { StaticImageData } from "next/image";
-import React, { useState, useEffect, HTMLAttributes, useRef } from "react";
+import { HTMLAttributes, useEffect, useRef, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
 //imagens
+import { useSession } from "next-auth/react";
+import imgCarrinho from "../../assets/carrinho.png";
+import imgDevolucao from "../../assets/devolucao.png";
 import imgRecebimento from "../../assets/entrega.png";
 import imgInventario from "../../assets/inventario.png";
-import imgDevolucao from "../../assets/devolucao.png";
-import imgCarrinho from "../../assets/carrinho.png";
 
 export default function MenuPrincipal_Page() {
 
-
+	const session = useSession()
+	console.log(session )
 	const infoGap = 4;
 	const gapVertical = 4;
 

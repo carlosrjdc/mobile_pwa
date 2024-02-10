@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useRecebimentoContext } from "../../context/contextRecebimento";
-import { useAnomaliaStore } from "../../states/recebimentoState";
+import { useAnomaliaStore, useProductStore } from "../../states/recebimentoState";
 import InfoPlacaOcr from "../7_globals/infoPlacaOcr";
 import AjudaDrawer from "./ajuda";
 import {
@@ -40,7 +40,7 @@ export default function Anomalia() {
 
   const ADD_ANOMLIA = useAnomaliaStore((state)=> state.ADD_ANOMALIA)
 
-
+ const infoProduct = useProductStore((state)=> state.produtos)
 
   const tamanhoEmBytes = new TextEncoder().encode(
     JSON.stringify(CausaNaoConformidadeArray)
@@ -268,7 +268,6 @@ export default function Anomalia() {
         <Button onClick={()=> AddNovaAnomalia()} type="button">VOLTAR</Button>
         <Button onClick={()=> AddNovaAnomalia()} type="button">CADASTRAR</Button>
       </div>
-      <Button>CADASTRAR ANOMALIA</Button>
     </div>
   );
 }

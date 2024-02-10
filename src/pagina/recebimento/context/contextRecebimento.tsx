@@ -23,6 +23,7 @@ export const RecebimentoProvider: React.FC<InterfaceProviderProps> = ({
 	);*/
 
 	return (
+		
 		<RecebimentoContext.Provider value={{ dispatchPage, statePage, stateAnomalia,dispatchAnomalia}}>
 			{children}
 		</RecebimentoContext.Provider>

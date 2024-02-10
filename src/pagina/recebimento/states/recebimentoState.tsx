@@ -28,6 +28,8 @@ interface ProductState {
     id: string;
     lote: string;
     quantidade: number;
+    unidade:number;
+    peso:number;
   }) => void;
 }
 
@@ -52,11 +54,11 @@ export const useAnomaliaStore = create<AnomaliaState>((set)=>({
         }))
     },
 
-}))
+})) 
 
 export const useProductStore = create<ProductState>((set) => ({
   produtos: [],
-  ADD_PRODUTO(by) {
+  async ADD_PRODUTO(by) {
     set((state) => ({
       produtos: [...state.produtos, by],
     }));
@@ -70,7 +72,7 @@ export const useProductStore = create<ProductState>((set) => ({
     set((state) => ({
       produtos: state.produtos.map((item: IProduto) =>
         item.id === by.id
-          ? { ...item, lote: by.lote, quantidade: by.quantidade }
+          ? { ...item, lote: by.lote, quantidade: by.quantidade, peso:by.peso, unidade:by.unidade }
           : item
       ),
     }));
@@ -147,6 +149,7 @@ export interface IProduto {
   descricao?: string;
   lote: string;
   quantidade: number;
+  unidade?:number;
   peso?: number;
   empresa?: string;
   anomalias?: IAnomalia | null;

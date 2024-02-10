@@ -1,5 +1,7 @@
-import TesteFinal from "@/pagina/recebimento/descarga/5_outros/teste";
+import ListaDemandaContagem from "@/pagina/estoque/contagem/demanda";
 
 export default function Estoque(){
-    return <div><TesteFinal/></div>
+    return <div>
+        <ListaDemandaContagem/> 
+    </div>
 }

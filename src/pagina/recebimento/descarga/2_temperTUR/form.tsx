@@ -61,6 +61,7 @@ export default function FormularioInfoTemperatura() {
         {...register("temperatura", { valueAsNumber: true })}
       />
       <Input
+      className="file:w-16 file:h-8 file:hidden flex item-center"
         onChange={(e) => handleFileChangeCarreta(e)}
         texto="Carreta Aberta"
         type="file"

@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/recebimento/[id]/page": [
+    "/estoque/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/recebimento/[id]/page.js"
+      "static/chunks/app/estoque/[id]/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -16,10 +16,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/recebimento/page": [
+    "/estoque/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/recebimento/page.js"
+      "static/chunks/app/estoque/page.js"
     ]
   }
 }

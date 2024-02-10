@@ -1,0 +1,22 @@
+export const enderecos = [
+    { endereco: "B 456 0882 47", tipo: "Inventario", data: "10/02/2024", demanda: 1, status:"contado" },
+    { endereco: "F 091 0614 85", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "P 700 0372 28", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "D 276 0445 11", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "Z 189 0075 55", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "K 802 0466 17", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "G 911 0992 74", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "Q 395 0333 05", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "A 321 0088 92", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "X 568 0772 29", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "E 650 0497 47", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "U 983 0033 13", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "C 721 0805 64", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "V 462 0246 21", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "L 847 0954 35", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "I 932 0348 37", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "T 153 0322 05", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "S 216 0114 09", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "N 889 0529 63", tipo: "Inventario", data: "10/02/2024", demanda: 1 },
+    { endereco: "R 754 0738 50", tipo: "Inventario", data: "10/02/2024", demanda: 1 }
+  ];

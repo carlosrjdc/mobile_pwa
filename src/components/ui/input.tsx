@@ -15,7 +15,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           type={type}
           className={cn(
-            "selection:animate-none outline-none w-full h-8 ",
+            "selection:animate-none outline-none w-full h-8 file:bg-lime-200",
             className
           )}
           ref={ref}

@@ -1,5 +1,7 @@
 import { Toaster } from "@/components/ui/toaster";
+import ProvedorAutenticacao from "@/pagina/recebimento/context/AuthProvider";
 import { RecebimentoProvider } from "@/pagina/recebimento/context/contextRecebimento";
+import VerificarStatus from "@/pagina/recebimento/context/verificarstatus";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -64,7 +66,14 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        <RecebimentoProvider>{children} </RecebimentoProvider>
+        <RecebimentoProvider>
+          <ProvedorAutenticacao>
+            <VerificarStatus>
+            {children}
+            </VerificarStatus>
+            </ProvedorAutenticacao>
+        </RecebimentoProvider>
+
         <Toaster />
       </body>
     </html>

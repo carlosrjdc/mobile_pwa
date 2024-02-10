@@ -61,7 +61,7 @@ export default function FormularioICarro() {
       fotoCarretaFechada: arquivoCarreta,
       fotoLacre: arquivoLacre,
     });
-    dispatchPage({type:"SET_PAGE", payload:{page:"info_temperatura"}});
+    dispatchPage({ type: "SET_PAGE", payload: { page: "info_temperatura" } });
   };
 
   //info_temperatura
@@ -88,6 +88,7 @@ export default function FormularioICarro() {
       <Input texto="LACRE" {...register("lacre")} />
 
       <Input
+      className="file:w-16 file:h-8 file:hidden flex item-center"
         onChange={(event) => {
           handleFileChangeCarreta(event);
         }}
@@ -95,6 +96,7 @@ export default function FormularioICarro() {
         type="file"
       />
       <Input
+        className="file:w-16 file:h-8 file:hidden flex item-center"
         onChange={(event) => {
           handleFileChangeLacre(event);
         }}
@@ -105,7 +107,9 @@ export default function FormularioICarro() {
         <Button onClick={() => router.push("/recebimento")} type="button">
           VOLTAR
         </Button>
-        <Button type="submit">CADASTRAR</Button>
+        <Button className="" type="submit">
+          CADASTRAR
+        </Button>
       </div>
     </form>
   );

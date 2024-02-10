@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { ITabela, tabela } from "@/data/produto";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { get } from "idb-keyval";
+import { AlertOctagon } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
@@ -22,6 +23,7 @@ const schema = z.object({
   lote: z.string().optional(),
   idPallet: z.string(),
   quantidade: z.number(),
+  unidade: z.number(),
   peso: z.number(),
 });
 
@@ -54,11 +56,11 @@ export default function FormularioConferencia() {
   const ADD_PRODUCT = useProductStore((state) => state.ADD_PRODUTO);
   const infoProduct = useProductStore((state) => state.produtos);
   const infoCarro = useInfoCarStore((state) => state.infoCarro);
-  const infoAnomalia = useAnomaliaStore((state)=> state.anomalia)
+  const infoAnomalia = useAnomaliaStore((state) => state.anomalia);
 
   const SET_PAGE = useInfoPageStore((state) => state.SET_PAGE);
 
-  console.log(infoProduct)
+  console.log(infoProduct);
 
   const onSubmit = (data: Schema) => {
     console.log(data);
@@ -68,9 +70,11 @@ export default function FormularioConferencia() {
       lote: data.lote ? data.lote : "",
       sku: data.sku,
       quantidade: data.quantidade,
+      unidade:data.unidade,
+      peso:data.peso,
       empresa: empresa,
       descricao: infoSku,
-      anomalias:infoAnomalia
+      anomalias: infoAnomalia,  
     });
     setInfoSku("");
     reset();
@@ -102,8 +106,8 @@ export default function FormularioConferencia() {
     }
   }
 
-  function ajustarValor(lote:string) {
-    console.log("opa")
+  function ajustarValor(lote: string) {
+    console.log("opa");
     setValue("lote", lote);
   }
 
@@ -129,19 +133,35 @@ export default function FormularioConferencia() {
         </div>
       )}
       <div className="flex items-center gap-2 mr-2">
-        <Input
-          texto="Lote"
-          placeholder="Lote"
-          {...register("lote")}
-        />
+        <Input texto="Lote" placeholder="Lote" {...register("lote")} />
 
-        <LoteProduto valueDisable={infoSku === ""} setValue={ajustarValor} empresa={empresa} />
+        <LoteProduto
+          valueDisable={infoSku === ""}
+          setValue={ajustarValor}
+          empresa={empresa}
+        />
       </div>
       <Input
-        texto="Quantidade"
+        texto="Caixas"
         {...register("quantidade", { valueAsNumber: true })}
       />
+      <Input
+        texto="Unidade"
+        {...register("unidade", { valueAsNumber: true })}
+      />
       <Input texto="Peso" {...register("peso", { valueAsNumber: true })} />
+      <button
+        disabled={infoSku === ""}
+        onClick={() =>
+          dispatchPage({ type: "SET_PAGE", payload: { page: "anomalia" } })
+        }
+        className="flex bg-red-200 m-1 rounded p-2 my-4 items-center gap-1 justify-center disabled:bg-slate-200"
+      >
+        <AlertOctagon color="red" />
+        <span className="text-sm uppercase font-semibold">
+          {"Registrar Anomalia  -->"}
+        </span>
+      </button>
       <div className="flex justify-between mt-4">
         <Button
           onClick={() =>
