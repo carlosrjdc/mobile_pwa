@@ -1,7 +1,7 @@
 import { Html5Qrcode } from "html5-qrcode";
 import { useEffect, useState } from "react";
 
-export default function LerQRCode({funcao}:{funcao:(e:string, v:string)=> void}){
+export default function LerQRCode({funcao}:{funcao:(e:string)=> void}){
     const [scanResult, setScanResult] = useState(null);
 
 	useEffect(() => {
@@ -13,7 +13,7 @@ export default function LerQRCode({funcao}:{funcao:(e:string, v:string)=> void})
 
 		function success(result: any) {
 			scanner.stop();
-			funcao("endereco",result);
+			funcao(result);
 		}
 
 		function error(err: any) {
