@@ -1,9 +1,12 @@
 import { Toaster } from "@/components/ui/toaster";
 import ProvedorAutenticacao from "@/pagina/recebimento/context/AuthProvider";
+
+import 'react-toastify/dist/ReactToastify.css';
 import { RecebimentoProvider } from "@/pagina/recebimento/context/contextRecebimento";
 import VerificarStatus from "@/pagina/recebimento/context/verificarstatus";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 
 const APP_NAME = "PWA App";

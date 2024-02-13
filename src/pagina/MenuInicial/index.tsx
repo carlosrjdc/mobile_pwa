@@ -11,6 +11,8 @@ import imgCarrinho from "../../assets/carrinho.png";
 import imgDevolucao from "../../assets/devolucao.png";
 import imgRecebimento from "../../assets/entrega.png";
 import imgInventario from "../../assets/inventario.png";
+import { update } from "idb-keyval";
+import { tabela } from "@/data/produto";
 
 export default function MenuPrincipal_Page() {
 
@@ -18,6 +20,10 @@ export default function MenuPrincipal_Page() {
 	console.log(session )
 	const infoGap = 4;
 	const gapVertical = 4;
+
+	useEffect(() => {
+		update("produtos",()=> tabela);
+	  }, []);
 
 	return (
 		<div

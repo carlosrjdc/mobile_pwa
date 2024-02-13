@@ -70,7 +70,7 @@ const handler = NextAuth({
   events: {
     async signOut({ session, token }) {
       //redirect(`http://192.168.1.4:8080/realms/carlos/protocol/openid-connect/logout?post_logout_redirect_uri=http:192.168.1.4:3000/estoque?id_token_hint=${token.accessToken}`)
-      await axios.get(`http://192.168.1.4:8080/realms/carlos/protocol/openid-connect/logout?post_logout_redirect_uri=http:192.168.1.4:3000/estoque&id_token_hint=${token.idToken}`).then(()=> console.log("Deslogado")).catch((erro)=> {})
+      await axios.get(`http://192.168.1.4:8080/realms/carlos/protocol/openid-connect/logout?post_logout_redirect_uri=http://192.168.1.4:3000/estoque&id_token_hint=${token.idToken}`).then(()=> console.log("Deslogado")).catch((erro)=> {})
     },
     signIn(message) {
         console.log({user: message.account})

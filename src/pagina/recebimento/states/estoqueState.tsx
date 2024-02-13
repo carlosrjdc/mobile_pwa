@@ -1,6 +1,8 @@
 import { create } from "zustand";
 
 
+const enderecos = ["A 001 0001 10", "A 001 0002 10"]
+
 interface ProductEstoqueState {
   produtos: IProduto[];
   ADD_PRODUTO: (by: IProduto) => void;
@@ -20,6 +22,7 @@ interface ProductEstoqueState {
 export const useProductEstoqueStore = create<ProductEstoqueState>((set) => ({
   produtos: [],
   ADD_PRODUTO(by) {
+    console.log(enderecos.includes(by.endereco))
     set((state) => ({
       produtos: [...state.produtos, by],
     }));
@@ -54,3 +57,5 @@ export interface IProduto {
   unidade?:number;
 
 }
+
+

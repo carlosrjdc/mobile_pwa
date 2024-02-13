@@ -83,7 +83,7 @@ export default function FormularioConferencia() {
   async function onChangeProduto(event: any) {
     const produto = await get("produtos");
     if (produto) {
-      const ajustado: ITabela[] = JSON.parse(produto);
+      const ajustado: ITabela[] = produto
 
       const verificar = ajustado.filter(
         (item) =>

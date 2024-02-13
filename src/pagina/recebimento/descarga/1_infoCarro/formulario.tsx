@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { tabela } from "@/data/produto";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { set } from "idb-keyval";
+import { update } from "idb-keyval";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -49,9 +49,7 @@ export default function FormularioICarro() {
   });
 
   //INDEXDB
-  useEffect(() => {
-    set("produtos", JSON.stringify(tabela));
-  }, []);
+
 
   //ONSUBMIT
   const onSubmit = (data: Schema) => {

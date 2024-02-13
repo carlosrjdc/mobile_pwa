@@ -1,7 +1,6 @@
 /** @format */
 
 "use client";
-import { Button } from "@/components/ui/button";
 import instance from "@/config/http";
 import { useRecebimentoContext } from "../../context/contextRecebimento";
 import useInfoCarStore, { useProductStore } from "../../states/recebimentoState";
@@ -43,9 +42,6 @@ export default function Conferencia() {
             </div>
           )}
         </div>
-      </div>
-      <div className="">
-        <Button onClick={()=> cadastrar()}>post</Button>
       </div>
     </div>
   );
