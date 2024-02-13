@@ -78,6 +78,7 @@ function ItemArray({ id, status }: { id: number; status: string }) {
       await cadastrarEnderecos(endereco.data);
       router.push(`/estoque/${id}`);
     }
+    router.push(`/estoque/${id}`);
   }
 
   return (
