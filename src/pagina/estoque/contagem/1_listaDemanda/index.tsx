@@ -70,15 +70,17 @@ function ItemArray({ id, status }: { id: number; status: string }) {
   async function addDemanda() {
     ADD_ID_DEMANDA(id);
 
-    const endereco = await axios.get(
+    router.push(`/estoque/${id}`);
+
+    /*const endereco = await axios.get(
       `http://192.168.1.4:4000/enderecosdemanda/${id}`
     );
 
     if (endereco) {
       await cadastrarEnderecos(endereco.data);
       router.push(`/estoque/${id}`);
-    }
-    router.push(`/estoque/${id}`);
+    }*/
+
   }
 
   return (
